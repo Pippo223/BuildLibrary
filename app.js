@@ -95,7 +95,38 @@ class Media {
   }
   
   class Catalog {
-    
+    constructor(category) {
+      this._category = category
+      if(this.category !=='books' && this.category !=='cds'
+       && this.category !=='movies') {
+      console.log('Invalid category. Set category to \'books\', \'cds\' or \'movies\' ')
+      }
+        this._books = []
+        this._cds = []
+        this._movies = []
+      
+    }
+  
+    get category() {
+      return this._category
+    }
+  
+    addMedia(title) { 
+      if (this._category === 'books') {
+        this._books.push(title)
+      }
+      else if (this._category === 'cds') {
+         this._cds.push(title)
+      } 
+       else if (this._category === 'movies') {
+         this._movies.push(title)
+      }
+      else {
+        return 'No such category'
+      }
+  
+    }
+  
   }
   
   const historyOfEverything = new Book('Bill Bryson', 'A Short History of Nearly Everything', 544 )
@@ -122,6 +153,17 @@ class Media {
   viewsAlbum.addSong('Pop Style')
   
   console.log(viewsAlbum.shuffle())
+  
+  const aBook = new Catalog('books')
+  aBook.addMedia('Sunset Beach')
+  aBook.addMedia('Aladin')
+  aBook.addMedia('Tarzan')
+  console.log(aBook)
+  
+  const aCD = new Catalog('cds')
+  aCD.addMedia('The Eminem Show')
+  aCD.addMedia('No Pressure')
+  console.log(aCD)
   
   
   
